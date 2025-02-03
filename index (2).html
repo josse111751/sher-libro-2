@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Libro Interactivo: Un Viaje de Vida y Amor</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fce4ec;
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    /* Contenedor del libro con bordes que simulan la encuadernación */
+    #book-container {
+      width: 90%;
+      max-width: 600px;
+      min-height: 500px;
+      background: #fff;
+      border: 20px solid #8B4513;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      overflow: hidden;
+      position: relative;
+    }
+    /* Cada página ocupa el 100% del contenedor, con transición de opacidad */
+    .page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      box-sizing: border-box;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      /* Fondo con sutil división central (simula el pliegue) */
+      background: linear-gradient(to right, #fff 48%, #f9f9f9 48%, #f9f9f9 52%, #fff 52%);
+    }
+    /* La página activa se muestra */
+    .page.active {
+      display: block;
+      opacity: 1;
+    }
+    /* Navegación: botones para avanzar y retroceder */
+    .navigation {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    .nav-btn {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background: #e91e63;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nav-btn:hover {
+      background: #d81b60;
+    }
+    /* Portada y Contraportada */
+    .cover, .back-cover {
+      text-align: center;
+    }
+    .cover h1, .back-cover h1 {
+      font-size: 2.8em;
+      color: #2b3a42;
+      margin-bottom: 10px;
+    }
+    .cover p, .back-cover p {
+      font-size: 1.3em;
+      color: #333;
+    }
+    /* Estilo para capítulos */
+    .chapter h2 {
+      font-size: 2em;
+      color: #2b3a42;
+      margin-bottom: 10px;
+    }
+    .chapter p {
+      font-size: 1em;
+      line-height: 1.6;
+      text-align: justify;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="book-container">
+    <!-- Página 0: Portada -->
+    <div class="page cover active" id="page-0">
+      <h1>Para ti, Shery</h1>
+      <p>Un viaje de vida y amor que narra historias de encuentros, sueños y destinos.</p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 1: Capítulo 1 -->
+    <div class="page chapter" id="page-1">
+      <h2>Capítulo 1: El Inicio de un Sueño</h2>
+      <p>
+        Todo comienza con un sueño. En el silencio de la noche, la mente se llena de esperanzas y se dibuja un camino hacia lo desconocido.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 2: Capítulo 2 -->
+    <div class="page chapter" id="page-2">
+      <h2>Capítulo 2: El Encuentro del Destino</h2>
+      <p>
+        El destino une caminos inesperados. Fue en un cruce de miradas donde se encendió la chispa de una historia que trasciende el tiempo.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 3: Capítulo 3 -->
+    <div class="page chapter" id="page-3">
+      <h2>Capítulo 3: Reflexiones sobre la Vida</h2>
+      <p>
+        La vida es un mosaico de momentos. Cada instante, por efímero que sea, nos enseña a crecer, amar y descubrir lo que realmente importa.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 4: Capítulo 4 -->
+    <div class="page chapter" id="page-4">
+      <h2>Capítulo 4: El Arte de Soñar</h2>
+      <p>
+        Soñar es el primer paso hacia la realidad. En cada sueño se esconde la semilla de un futuro lleno de posibilidades.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 5: Capítulo 5 -->
+    <div class="page chapter" id="page-5">
+      <h2>Capítulo 5: Huellas del Pasado</h2>
+      <p>
+        El pasado, con sus alegrías y tristezas, forma la esencia de nuestro ser. Cada recuerdo deja una huella que nos impulsa a seguir adelante.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 6: Capítulo 6 -->
+    <div class="page chapter" id="page-6">
+      <h2>Capítulo 6: Caminos que se Entrecruzan</h2>
+      <p>
+        En la encrucijada de la existencia, los caminos se entrelazan de forma mágica. Cada cruce es una oportunidad para encontrarnos y aprender.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 7: Capítulo 7 -->
+    <div class="page chapter" id="page-7">
+      <h2>Capítulo 7: Un Amor Inesperado</h2>
+      <p>
+        A veces el amor surge sin previo aviso, iluminando los rincones más oscuros y llenando de color el alma.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 8: Capítulo 8 -->
+    <div class="page chapter" id="page-8">
+      <h2>Capítulo 8: El Reto de Ser Uno Mismo</h2>
+      <p>
+        En un mundo que exige adaptarse, el mayor reto es descubrir y abrazar nuestra verdadera esencia, sin máscaras ni reservas.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 9: Capítulo 9 -->
+    <div class="page chapter" id="page-9">
+      <h2>Capítulo 9: Conversaciones en el Silencio</h2>
+      <p>
+        A veces, las miradas y los gestos dicen más que las palabras. En el silencio se ocultan diálogos profundos que sólo el corazón entiende.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 10: Capítulo 10 -->
+    <div class="page chapter" id="page-10">
+      <h2>Capítulo 10: El Valor de la Honestidad</h2>
+      <p>
+        La honestidad es la base de toda relación genuina. Con ella se forja la confianza y se abren las puertas a un amor verdadero.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 11: Capítulo 11 -->
+    <div class="page chapter" id="page-11">
+      <h2>Capítulo 11: La Fuerza de los Recuerdos</h2>
+      <p>
+        Los recuerdos son tesoros que nos acompañan a lo largo del camino, iluminando la ruta y recordándonos quiénes somos.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 12: Capítulo 12 -->
+    <div class="page chapter" id="page-12">
+      <h2>Capítulo 12: Miradas que Hablan</h2>
+      <p>
+        Una mirada puede transmitir secretos, emociones y promesas. En el encuentro de ojos se escribe una historia sin palabras.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 13: Capítulo 13 -->
+    <div class="page chapter" id="page-13">
+      <h2>Capítulo 13: Secretos del Alma</h2>
+      <p>
+        Cada ser guarda en su interior secretos que, al ser compartidos, se transforman en lazos inquebrantables de amor y amistad.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 14: Capítulo 14 -->
+    <div class="page chapter" id="page-14">
+      <h2>Capítulo 14: Sueños y Realidades</h2>
+      <p>
+        La delgada línea entre sueños y realidades se difumina cuando el corazón se atreve a soñar despierto y a construir un mundo propio.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 15: Capítulo 15 -->
+    <div class="page chapter" id="page-15">
+      <h2>Capítulo 15: El Tiempo que Cura</h2>
+      <p>
+        Con el paso del tiempo, las heridas se sanan y los corazones aprenden a latir de nuevo, más fuertes y sabios.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 16: Capítulo 16 -->
+    <div class="page chapter" id="page-16">
+      <h2>Capítulo 16: Entre Sombras y Luces</h2>
+      <p>
+        La vida es un constante vaivén entre la oscuridad y la luz. Es en ese contraste donde descubrimos la belleza de existir.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 17: Capítulo 17 -->
+    <div class="page chapter" id="page-17">
+      <h2>Capítulo 17: La Magia de un Instante</h2>
+      <p>
+        Hay momentos que trascienden el tiempo, instantes tan mágicos que parecen detener el universo por un segundo.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 18: Capítulo 18 -->
+    <div class="page chapter" id="page-18">
+      <h2>Capítulo 18: El Amor en Silencio</h2>
+      <p>
+        No siempre se necesita gritar al mundo para sentir el amor. A veces, un susurro, una caricia en el alma, es suficiente para decirlo todo.
+      </p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+        <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+    
+    <!-- Página 19: Contraportada -->
+    <div class="page back-cover" id="page-19">
+      <h1>Un Nuevo Comienzo</h1>
+      <p>
+        Querida Shery, a lo largo de este viaje he compartido un pedacito de mi alma y la forma en que veo la vida. Espero que en cada página hayas sentido la esencia de un amor sutil y una invitación a descubrir juntos lo maravilloso que nos espera. Te invito a compartir este camino conmigo y me gustaria invitarte a salir....
+      </p>
+      <p style="font-size: 0.9em; margin-top: 20px;">Con todo mi cariño, [Josee]</p>
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevPage()">Anterior</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const pages = [];
+    for (let i = 0; i < 20; i++) {
+      pages.push("page-" + i);
+    }
+    let currentPage = 0;
+    
+    function showPage(index) {
+      // Oculta la página actual
+      document.getElementById(pages[currentPage]).classList.remove('active');
+      // Actualiza el índice actual
+      currentPage = index;
+      // Muestra la nueva página
+      document.getElementById(pages[currentPage]).classList.add('active');
+    }
+    
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        showPage(currentPage + 1);
+      }
+    }
+    
+    function prevPage() {
+      if (currentPage > 0) {
+        showPage(currentPage - 1);
+      }
+    }
+  </script>
+</body>
+</html>
